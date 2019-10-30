@@ -118,7 +118,7 @@ WHERE (get_byte(s.""SomeBytea"", 0) = 3) AND get_byte(s.""SomeBytea"", 0) IS NOT
 
 SELECT s.""Id"", s.""SomeArray"", s.""SomeBytea"", s.""SomeList"", s.""SomeMatrix"", s.""SomeText""
 FROM ""SomeEntities"" AS s
-WHERE ((s.""SomeArray"" = @__arr_0) AND ((s.""SomeArray"" IS NOT NULL) AND (@__arr_0 IS NOT NULL))) OR ((s.""SomeArray"" IS NULL) AND (@__arr_0 IS NULL))
+WHERE (s.""SomeArray"" = @__arr_0) AND (s.""SomeArray"" IS NOT NULL)
 LIMIT 2");
             }
         }

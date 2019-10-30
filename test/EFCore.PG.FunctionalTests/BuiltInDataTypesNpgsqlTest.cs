@@ -67,7 +67,7 @@ WHERE (m.""TimeSpanAsTime"" = TIME '00:01:02') AND (m.""TimeSpanAsTime"" IS NOT 
 
 SELECT m.""Int""
 FROM ""MappedNullableDataTypes"" AS m
-WHERE ((m.""TimeSpanAsTime"" = @__timeSpan_0) AND ((m.""TimeSpanAsTime"" IS NOT NULL) AND (@__timeSpan_0 IS NOT NULL))) OR ((m.""TimeSpanAsTime"" IS NULL) AND (@__timeSpan_0 IS NULL))");
+WHERE (m.""TimeSpanAsTime"" = @__timeSpan_0) AND (m.""TimeSpanAsTime"" IS NOT NULL)");
             }
         }
 
