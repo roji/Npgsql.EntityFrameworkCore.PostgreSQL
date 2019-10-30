@@ -27,7 +27,8 @@ WHERE (c.""Region"" IS NULL) OR ((BTRIM(c.""Region"", E' \t\n\r') = '') AND (BTR
         }
 
         [ConditionalTheory(Skip = "Fixed for PostgreSQL 12.1, https://www.postgresql.org/message-id/CADT4RqAz7oN4vkPir86Kg1_mQBmBxCp-L_%3D9vRpgSNPJf0KRkw%40mail.gmail.com")]
-        public override Task Indexof_with_emptystring(bool isAsync) => Task.CompletedTask;
+        public override Task Indexof_with_emptystring(bool isAsync)
+            => base.Indexof_with_emptystring(isAsync);
 
         #region Regex
 
@@ -124,6 +125,6 @@ WHERE (c.""Region"" IS NULL) OR ((BTRIM(c.""Region"", E' \t\n\r') = '') AND (BTR
         #endregion
 
         void AssertContainsSqlFragment(string expectedFragment)
-            => Assert.True(Fixture.TestSqlLoggerFactory.SqlStatements.Any(s => s.Contains(expectedFragment)));
+            => Assert.Contains(Fixture.TestSqlLoggerFactory.SqlStatements, s => s.Contains(expectedFragment));
     }
 }

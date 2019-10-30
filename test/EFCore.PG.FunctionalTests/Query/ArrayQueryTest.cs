@@ -42,7 +42,7 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
             using (var ctx = Fixture.CreateContext())
             {
                 var actual = ctx.SomeEntities.Where(e => e.SomeArray[0] == 3).ToList();
-                Assert.Equal(1, actual.Count);
+                Assert.Single(actual);
 
                 AssertSql(
                     @"SELECT s.""Id"", s.""SomeArray"", s.""SomeBytea"", s.""SomeList"", s.""SomeMatrix"", s.""SomeText""
@@ -59,7 +59,7 @@ WHERE s.""SomeArray""[1] = 3");
                 // ReSharper disable once ConvertToConstant.Local
                 var x = 0;
                 var actual = ctx.SomeEntities.Where(e => e.SomeArray[x] == 3).ToList();
-                Assert.Equal(1, actual.Count);
+                Assert.Single(actual);
 
                 AssertSql(
                     @"@__x_0='0'
@@ -76,7 +76,7 @@ WHERE (s.""SomeArray""[@__x_0 + 1] = 3) AND (s.""SomeArray""[@__x_0 + 1] IS NOT 
             using (var ctx = Fixture.CreateContext())
             {
                 var actual = ctx.SomeEntities.Where(e => e.SomeBytea[0] == 3).ToList();
-                Assert.Equal(1, actual.Count);
+                Assert.Single(actual);
 
                 AssertSql(
                     @"SELECT s.""Id"", s.""SomeArray"", s.""SomeBytea"", s.""SomeList"", s.""SomeMatrix"", s.""SomeText""
@@ -91,7 +91,7 @@ WHERE (get_byte(s.""SomeBytea"", 0) = 3) AND (get_byte(s.""SomeBytea"", 0) IS NO
             using (var ctx = Fixture.CreateContext())
             {
                 var actual = ctx.SomeEntities.Where(e => e.SomeText[0] == 'f').ToList();
-                Assert.Equal(1, actual.Count);
+                Assert.Single(actual);
 
                 AssertSql(
                     @"SELECT s.""Id"", s.""SomeArray"", s.""SomeBytea"", s.""SomeList"", s.""SomeMatrix"", s.""SomeText""
@@ -248,7 +248,7 @@ LIMIT 2");            }
             using (var ctx = Fixture.CreateContext())
             {
                 var count = ctx.SomeEntities.Count(e => e.SomeArray.Any());
-                Assert.Equal(count, 2);
+                Assert.Equal(2, count);
 
                 AssertSql(
                     @"SELECT COUNT(*)::INT

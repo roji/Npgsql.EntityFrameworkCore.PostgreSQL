@@ -19,10 +19,12 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Query
         }
 
         [ConditionalTheory(Skip = "https://github.com/aspnet/EntityFrameworkCore/pull/17379")]
-        public override Task SelectMany_correlated_with_outer_2(bool isAsync) => null;
+        public override Task SelectMany_correlated_with_outer_2(bool isAsync)
+            => base.SelectMany_correlated_with_outer_2(isAsync);
 
         [ConditionalTheory(Skip = "https://github.com/aspnet/EntityFrameworkCore/pull/17379")]
-        public override Task SelectMany_correlated_with_outer_4(bool isAsync) => null;
+        public override Task SelectMany_correlated_with_outer_4(bool isAsync)
+            => base.SelectMany_correlated_with_outer_4(isAsync);
 
         #region Overrides
 
