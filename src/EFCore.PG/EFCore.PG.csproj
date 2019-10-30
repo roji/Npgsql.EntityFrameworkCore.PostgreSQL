@@ -19,8 +19,20 @@
 
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+<!--
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="$(EFCoreVersion)" PrivateAssets="none" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="$(EFCoreVersion)" PrivateAssets="none" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="$(EFCoreVersion)" PrivateAssets="none" />
+-->
+    <PackageReference Include="Npgsql" Version="$(NpgsqlVersion)" />
+
   </ItemGroup>
-  
+  <ItemGroup>
+    <ProjectReference Include="../../../EFCore/src/EFCore/EFCore.csproj" />
+    <ProjectReference Include="../../../EFCore/src/EFCore.Relational/EFCore.Relational.csproj" />
+    <ProjectReference Include="../../../EFCore/src/EFCore.Abstractions/EFCore.Abstractions.csproj" />
+  </ItemGroup>
+
   <ItemGroup>
 
     <None Update="Properties\NpgsqlStrings.Designer.tt">

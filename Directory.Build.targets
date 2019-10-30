@@ -1,4 +1,4 @@
-﻿<Project>
+<Project>
   <ItemGroup>
     <PackageReference Update="Microsoft.EntityFrameworkCore" Version="3.1.0-preview2.19525.5" />
     <PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="3.1.0-preview2.19525.5" />
@@ -19,4 +19,14 @@
     <PackageReference Update="xunit.assert" Version="2.4.1" />
     <PackageReference Update="xunit.runner.visualstudio" Version="2.4.1" />
   </ItemGroup>
+
+  <Import Project="../EFCore/eng/Versions.props" />
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Net.Compilers.Toolset"
+        Version="$(MicrosoftNetCompilersToolsetVersion)"
+        PrivateAssets="all"
+        IsImplicitlyDefined="true" />
+  </ItemGroup>
+
 </Project>
